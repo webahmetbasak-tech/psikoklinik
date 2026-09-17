@@ -1,0 +1,69 @@
+:host {
+  display: block;
+  line-height: 0;
+}
+
+svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.ink,
+.thin,
+.drawn {
+  fill: none;
+  stroke: var(--c-dark);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.thin {
+  stroke-opacity: 0.9;
+}
+
+.drawn--lilac {
+  stroke: var(--c-lilac);
+}
+
+.drawn--green {
+  stroke: var(--c-green);
+}
+
+// Flat marker colour, slightly off the ink.
+.fill {
+  transform: translate(1.5%, 1%);
+}
+
+.fill--orange { fill: var(--c-accent); }
+.fill--blue { fill: var(--c-blue); }
+.fill--green { fill: var(--c-green); }
+.fill--lilac { fill: var(--c-lilac); }
+.fill--sand { fill: color-mix(in oklab, var(--c-background), var(--c-dark) 6%); }
+
+.brush {
+  fill: none;
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+// Short easing so wheel steps don't look jumpy; scroll still drives it.
+.brush,
+.drawn {
+  transition: stroke-dashoffset 0.25s linear;
+}
+
+:host(.is-eager) .brush,
+:host(.is-eager) .drawn {
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.65, 0, 0.35, 1) 1.2s;
+}
+
+.streak {
+  fill: none;
+  stroke: var(--c-background);
+  stroke-width: 2%;
+  stroke-linecap: round;
+  opacity: 0.8;
+}

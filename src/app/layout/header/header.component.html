@@ -1,0 +1,54 @@
+<header class="bar">
+  <div class="bar__inner">
+    <a class="bar__logo" href="#top" (click)="go('top', $event)" [attr.aria-label]="config().clinicName + ' — ana sayfa'">
+      <app-logo />
+    </a>
+
+    <nav class="bar__nav" aria-label="Ana menü">
+      <ul>
+        @for (item of nav(); track item.target) {
+          <li>
+            <a
+              [href]="'#' + item.target"
+              [class.is-active]="active() === item.target"
+              [attr.aria-current]="active() === item.target ? 'true' : null"
+              (click)="go(item.target, $event)"
+            >
+              {{ item.label }}
+              <svg viewBox="0 0 120 12" preserveAspectRatio="none" aria-hidden="true">
+                <path pathLength="1" d="M3 8c30-3 62-5 114-5-40 3-70 5-100 7" />
+              </svg>
+            </a>
+          </li>
+        }
+      </ul>
+      <a class="bar__cta" appAppointmentLink>{{ config().headerCta }}</a>
+    </nav>
+
+    <button
+      type="button"
+      class="bar__burger"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="mobile-menu"
+      (click)="toggleMenu()"
+    >
+      <span class="visually-hidden">{{ menuOpen() ? 'Menüyü kapat' : 'Menüyü aç' }}</span>
+      <svg viewBox="0 0 30 24" aria-hidden="true">
+        <path d="M3 4c8-1 16 0 24-1M3 12c8 0 16-1 24 0M3 20c8-1 16 0 24-1" />
+      </svg>
+    </button>
+  </div>
+</header>
+
+<div class="menu" id="mobile-menu" [attr.inert]="menuOpen() ? null : ''">
+  <nav aria-label="Mobil menü">
+    <ul>
+      @for (item of nav(); track item.target) {
+        <li>
+          <a [href]="'#' + item.target" (click)="go(item.target, $event)">{{ item.label }}</a>
+        </li>
+      }
+    </ul>
+    <a class="bar__cta" appAppointmentLink (click)="closeMenu()">{{ config().headerCta }}</a>
+  </nav>
+</div>

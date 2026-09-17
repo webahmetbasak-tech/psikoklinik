@@ -1,0 +1,223 @@
+:host {
+  display: block;
+  position: relative;
+  z-index: 1;
+  background: var(--c-background);
+  padding-top: 80px;
+}
+
+.footer {
+  position: relative;
+  color: var(--c-background);
+  background: var(--c-blue);
+}
+
+// Scalloped top: paper-coloured bites along the edge.
+.footer__edge {
+  position: absolute;
+  inset: -1px 0 auto;
+  height: 22px;
+  background: radial-gradient(circle 16px at 26px 0, var(--c-background) 98%, transparent) 0 0 / 52px 22px repeat-x;
+}
+
+.footer__inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  max-width: calc(var(--max) + var(--gutter) * 2);
+  margin: 0 auto;
+  padding: 0 var(--gutter) 30px 75px;
+  column-gap: 60px;
+
+
+}
+
+// ── Cards overlapping the edge ──────────────────────────────────────────────
+
+.footer__cards {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  margin-top: -78px;
+  min-height: 420px;
+}
+
+.card {
+  position: relative;
+  width: 380px;
+  padding: 50px;
+  color: var(--c-dark);
+  background: var(--c-background);
+
+  ul {
+    display: grid;
+    gap: 22px;
+    margin: 30px 0 0;
+    padding: 0;
+    list-style: none;
+    font-size: 16px;
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover,
+    &:focus-visible {
+      text-decoration: underline;
+      text-decoration-color: var(--c-green);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+    }
+  }
+}
+
+.card--solid {
+  z-index: 0;
+  margin-top: 45px;
+  border: 1px solid var(--c-blue);
+}
+
+.card--dashed {
+  z-index: 1;
+  margin-left: -60px;
+  border: 1px dashed var(--c-blue);
+}
+
+.card__title {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: var(--c-dark);
+}
+
+.card__title--second {
+  margin-top: 40px;
+}
+
+.muted {
+  color: rgb(var(--c-dark-rgb) / 0.7);
+}
+
+.card__corner {
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, var(--c-background) 50%, var(--c-green) 50%);
+}
+
+// ── Slogan, social ──────────────────────────────────────────────────────────
+
+.footer__side {
+  display: grid;
+  align-content: center;
+  gap: 80px;
+  margin-bottom: -30px;
+  padding: 120px 0 30px 40px;
+  // Dashed divider between the halves.
+  border-left: 1px dashed rgb(var(--c-background-rgb) / 0.6);
+}
+
+.footer__slogan {
+  display: grid;
+  font-size: var(--t-l);
+  line-height: 1.15;
+  letter-spacing: var(--t-l-ls);
+  font-weight: 400;
+}
+
+.footer__social {
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  a {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--c-background);
+    color: var(--c-blue);
+    transition: transform 0.3s var(--ease);
+
+    &:hover,
+    &:focus-visible {
+      transform: translateY(-2px) rotate(-6deg);
+    }
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+.footer__bottom {
+  align-self: end;
+  padding-top: 40px;
+  font-size: 18px;
+
+  .small {
+    margin-top: 6px;
+    font-size: 12px;
+    opacity: 0.85;
+  }
+}
+
+.footer__logo {
+  align-self: end;
+  justify-self: end;
+}
+
+@media (max-width: 1100px) {
+  .footer__inner {
+    grid-template-columns: 1fr;
+    padding-left: var(--gutter);
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .footer__side {
+    border-left: 0;
+    padding: 60px 0 0;
+    gap: 40px;
+  }
+
+  .footer__logo {
+    justify-self: start;
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer__cards {
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .card {
+    width: 100%;
+    padding: 36px 30px;
+  }
+
+  .card--solid {
+    margin-top: 0;
+  }
+
+  .card--dashed {
+    margin: -20px 0 0 20px;
+    width: calc(100% - 20px);
+  }
+}

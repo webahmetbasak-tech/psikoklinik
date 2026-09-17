@@ -1,0 +1,80 @@
+:host {
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.intro {
+  position: relative;
+  background: var(--c-background);
+}
+
+// A row of blue-rimmed bites along the top edge. Inside each bite the hero
+// below stays visible; outside it the section's paper begins.
+.intro__edge {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: 26px;
+  background: radial-gradient(
+      circle 24px at 25px 0,
+      transparent 21px,
+      var(--c-blue) 21.5px,
+      var(--c-blue) 23px,
+      var(--c-background) 23.5px
+    )
+    0 100% / 49px 26px repeat-x;
+  pointer-events: none;
+}
+
+// Same composition as the closing booking section: copy left, drawing right.
+.intro__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 520px) minmax(0, 1fr);
+  align-items: center;
+  gap: 40px;
+  padding-top: 90px;
+  padding-bottom: 90px;
+}
+
+.intro__copy {
+  display: grid;
+  gap: 40px;
+  justify-items: start;
+}
+
+.intro__title {
+  margin: 0;
+  font-size: calc(var(--t-xl) * 0.75);
+}
+
+.room {
+  width: 100%;
+  max-width: 860px;
+  justify-self: end;
+}
+
+@media (max-width: 960px) {
+  .intro__grid {
+    grid-template-columns: 1fr;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .intro__copy {
+    gap: 24px;
+  }
+
+  .room {
+    justify-self: center;
+  }
+}
+
+// Phones: tighter rhythm between sections.
+@media (max-width: 768px) {
+  .intro__grid {
+    padding-top: 36px;
+    padding-bottom: 36px;
+  }
+}

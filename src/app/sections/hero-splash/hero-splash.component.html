@@ -1,0 +1,44 @@
+<section class="splash lined" id="top" aria-labelledby="splash-title">
+  <div class="splash__wrap">
+    <!-- Envelope: what do you need help with? -->
+    <div class="envelope">
+      <svg class="envelope__paper" viewBox="0 0 880 500" preserveAspectRatio="none" aria-hidden="true">
+        <path class="envelope__back" d="M22 72L842 4l8 92-786 12 8 388-30 2z" />
+        <path class="envelope__flap" d="M690 98L846 8" />
+      </svg>
+
+      <form class="envelope__card scribble-always" (submit)="searchTopic($event)">
+        <app-sketch class="stamp" name="stamp" [eager]="true" />
+        <span class="stamp__caption" aria-hidden="true">{{ hero().stampCaption }}</span>
+
+        <h1 id="splash-title" class="t-m envelope__title">
+          <app-scribble-text [text]="hero().searchTitle" />
+        </h1>
+        <app-combobox
+          class="field"
+          inputId="topic"
+          [options]="suggestions()"
+          [placeholder]="hero().searchPlaceholder"
+          [(value)]="topic"
+        />
+      </form>
+    </div>
+
+    <!-- Ticket: how would you like to meet? -->
+    <form class="ticket" (submit)="submit($event)">
+      <div class="ticket__body">
+        <h2 class="t-m ticket__title">{{ hero().formatTitle }}</h2>
+        <div class="ticket__field">
+          <app-combobox
+            class="is-light"
+            inputId="format"
+            [options]="hero().formatOptions"
+            [placeholder]="hero().formatPlaceholder"
+            [(value)]="format"
+          />
+        </div>
+        <button type="submit" class="pill pill--light">{{ hero().cta }}</button>
+      </div>
+    </form>
+  </div>
+</section>

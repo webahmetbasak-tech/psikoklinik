@@ -1,0 +1,53 @@
+<section class="ai" id="ai-randevu" aria-labelledby="ai-title">
+  <div class="wrap ai__grid">
+    <div class="ai__intro">
+      <h2 id="ai-title" class="t-l" appReveal>
+        @for (line of section().title.split('|'); track $index) {
+          <span class="line">{{ line.trim() }}</span>
+        }
+      </h2>
+      <p class="t-body-m ai__text" appReveal [revealDelay]="100">{{ section().text }}</p>
+      <p class="t-body-s ai__disclaimer" appReveal [revealDelay]="160">{{ cfg().disclaimer }}</p>
+      @if (config().illustrations.ai; as art) {
+        <app-painted-svg class="ai__sketch" [src]="art" />
+      }
+    </div>
+
+    <div class="folder" appReveal>
+      <span class="folder__tab t-body-s">{{ cfg().name }}</span>
+
+      <div class="log" #log role="log" aria-live="polite" aria-relevant="additions">
+        @for (m of messages(); track $index; let last = $last) {
+          <div class="msg" [class.msg--user]="m.role === 'user'" [class.msg--alert]="m.emergency">
+            <p>{{ m.text }}</p>
+
+            @if (m.links?.length) {
+              <div class="msg__links">
+                @for (l of m.links; track l.href) {
+                  <a class="pill" [class.pill--ghost]="!l.primary" [href]="l.href" target="_blank" rel="noopener">{{ l.label }}</a>
+                }
+              </div>
+            }
+
+            @if (last && m.options?.length && !thinking()) {
+              <ul class="msg__options">
+                @for (o of m.options; track o) {
+                  <li><button type="button" (click)="send(o)">{{ o }}</button></li>
+                }
+              </ul>
+            }
+          </div>
+        }
+        @if (thinking()) {
+          <div class="msg msg--typing" role="status" aria-label="Yanıt hazırlanıyor"><span></span><span></span><span></span></div>
+        }
+      </div>
+
+      <form class="ask" (submit)="submit($event)">
+        <label class="visually-hidden" for="ai-input">{{ cfg().placeholder }}</label>
+        <input id="ai-input" #input type="text" autocomplete="off" maxlength="400" [placeholder]="cfg().placeholder" />
+        <button type="submit" class="pill">Gönder</button>
+      </form>
+    </div>
+  </div>
+</section>

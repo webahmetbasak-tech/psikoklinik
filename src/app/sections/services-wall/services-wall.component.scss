@@ -1,0 +1,242 @@
+:host {
+  display: block;
+  position: relative;
+  z-index: 1;
+  background: var(--c-background);
+}
+
+.services__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 800px;
+  column-gap: 40px;
+  padding-top: 75px;
+  padding-bottom: 150px;
+}
+
+.services__aside {
+  position: sticky;
+  top: calc(var(--header-h) + 30px);
+  align-self: start;
+  display: grid;
+  justify-items: start;
+  gap: 40px;
+}
+
+.line {
+  display: block;
+}
+
+.services__sketch {
+  width: 240px;
+  margin: 0 0 0 100px;
+}
+
+// ── Cards: two staggered columns ────────────────────────────────────────────
+
+.cards {
+  display: grid;
+  grid-template-columns: 380px 380px;
+  column-gap: 40px;
+  row-gap: 60px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  > li:nth-child(odd) {
+    translate: 0 150px;
+  }
+}
+
+.card__button {
+  display: grid;
+  gap: 20px;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.card__panel {
+  --cut: 48px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  background: var(--panel, var(--c-green));
+  clip-path: polygon(
+    var(--cut) 0,
+    calc(100% - var(--cut)) 0,
+    100% var(--cut),
+    100% calc(100% - var(--cut)),
+    calc(100% - var(--cut)) 100%,
+    var(--cut) 100%,
+    0 calc(100% - var(--cut)),
+    0 var(--cut)
+  );
+  overflow: hidden;
+}
+
+[data-accent='green'] {
+  --panel: color-mix(in oklab, var(--c-green), var(--c-background) 80%);
+}
+[data-accent='blue'] {
+  --panel: color-mix(in oklab, var(--c-blue), var(--c-background) 80%);
+}
+[data-accent='orange'] {
+  --panel: color-mix(in oklab, var(--c-accent), var(--c-background) 80%);
+}
+[data-accent='lilac'] {
+  --panel: color-mix(in oklab, var(--c-lilac), var(--c-background) 45%);
+}
+
+// The photo sits inside the coloured panel, cut to the same octagon but
+// inset, so the panel stays visible as a frame around it.
+.card__photo {
+  --inset: 14px;
+  position: absolute;
+  inset: var(--inset);
+  overflow: hidden;
+  background: color-mix(in oklab, var(--panel), var(--c-dark) 8%);
+  clip-path: polygon(
+    calc(var(--cut) - var(--inset) / 2) 0,
+    calc(100% - var(--cut) + var(--inset) / 2) 0,
+    100% calc(var(--cut) - var(--inset) / 2),
+    100% calc(100% - var(--cut) + var(--inset) / 2),
+    calc(100% - var(--cut) + var(--inset) / 2) 100%,
+    calc(var(--cut) - var(--inset) / 2) 100%,
+    0 calc(100% - var(--cut) + var(--inset) / 2),
+    0 calc(var(--cut) - var(--inset) / 2)
+  );
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: scale 0.8s var(--ease);
+  }
+}
+
+.card__button:hover .card__photo img,
+.card__button:focus-visible .card__photo img {
+  scale: 1.05;
+}
+
+.card__text {
+  display: grid;
+  gap: 16px;
+  padding: 0 20px;
+}
+
+.card__title {
+  display: block;
+}
+
+.card__formats {
+  color: rgb(var(--c-dark-rgb) / 0.7);
+}
+
+.is-match .card__panel {
+  outline: 3px dashed var(--c-blue);
+  outline-offset: -12px;
+}
+
+@media (max-width: 1350px) {
+  .services__grid {
+    grid-template-columns: minmax(0, 1fr) 640px;
+  }
+
+  .cards {
+    grid-template-columns: 300px 300px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .services__grid {
+    grid-template-columns: 1fr;
+    row-gap: 60px;
+    padding-bottom: 75px;
+  }
+
+  .services__aside {
+    position: relative;
+    top: 0;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    column-gap: 30px;
+    row-gap: 30px;
+
+    h2 {
+      grid-column: 1;
+    }
+  }
+
+  .services__cta {
+    grid-column: 1;
+  }
+
+  .services__sketch {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    width: clamp(120px, 22vw, 200px);
+    margin: 0;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(20px, 4vw, 40px);
+    row-gap: 50px;
+
+    > li:nth-child(odd) {
+      translate: none;
+    }
+  }
+
+  .card__text {
+    padding: 0 10px;
+  }
+}
+
+// Phones: compact rows with a small octagon thumbnail.
+@media (max-width: 600px) {
+  .cards {
+    grid-template-columns: 1fr;
+    row-gap: 32px;
+  }
+
+  .card__button {
+    grid-template-columns: 96px 1fr;
+    align-items: start;
+    gap: 20px;
+  }
+
+  .card__panel {
+    --cut: 16px;
+  }
+
+  .card__photo {
+    --inset: 5px;
+  }
+
+  .card__text {
+    gap: 8px;
+    padding: 0;
+  }
+
+  .card__title {
+    font-size: 24px;
+    letter-spacing: -1px;
+  }
+}
+
+// Phones: tighter rhythm between sections.
+@media (max-width: 768px) {
+  .services__grid {
+    padding-top: 40px;
+    padding-bottom: 48px;
+    row-gap: 40px;
+  }
+}

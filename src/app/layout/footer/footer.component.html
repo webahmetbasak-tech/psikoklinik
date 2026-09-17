@@ -1,0 +1,77 @@
+<footer class="footer">
+  <div class="footer__edge" aria-hidden="true"></div>
+
+  <div class="footer__inner">
+    <div class="footer__cards">
+      <section class="card card--solid" aria-labelledby="f-contact">
+        <h2 id="f-contact" class="card__title">{{ config().footer.contactTitle }}</h2>
+        <ul>
+          <li><a [href]="clinic.phoneHref()">{{ c().phone }}</a></li>
+          <li><a [href]="clinic.whatsappHref()" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a [href]="clinic.emailHref()">{{ c().email }}</a></li>
+          <li>
+            <a [href]="c().googleMapsUrl" target="_blank" rel="noopener">{{ c().address }}, {{ c().district }} / {{ c().city }}</a>
+          </li>
+          @for (h of c().workingHours; track h.days) {
+            <li class="muted">{{ h.days }}: {{ h.hours }}</li>
+          }
+        </ul>
+      </section>
+
+      <section class="card card--dashed" aria-labelledby="f-clinic">
+        <h2 id="f-clinic" class="card__title">{{ config().footer.clinicTitle }}</h2>
+        <ul>
+          @for (item of config().navigation; track item.target) {
+            <li><a [href]="'#' + item.target" (click)="go(item.target, $event)">{{ item.label }}</a></li>
+          }
+        </ul>
+        <h2 class="card__title card__title--second">{{ config().footer.legalTitle }}</h2>
+        <ul>
+          @for (l of config().footer.legalLinks; track l.label) {
+            <li><a [href]="l.href">{{ l.label }}</a></li>
+          }
+        </ul>
+        <span class="card__corner" aria-hidden="true"></span>
+      </section>
+    </div>
+
+    <div class="footer__side">
+      <p class="footer__slogan">
+        @for (line of sloganLines(); track $index) {
+          <span>{{ line }}</span>
+        }
+      </p>
+      <ul class="footer__social" aria-label="Sosyal medya">
+        @for (s of social(); track s.key) {
+          <li>
+            <a [href]="s.href" target="_blank" rel="noopener" [attr.aria-label]="s.key">
+              @switch (s.key) {
+                @case ('instagram') {
+                  <svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="4" /><circle cx="12" cy="12" r="3.2" /><circle cx="16.2" cy="7.8" r="0.6" /></svg>
+                }
+                @case ('linkedin') {
+                  <svg viewBox="0 0 24 24"><path d="M7 10v7M7 7v.1M11 17v-7M11 13c0-2 1.2-3 2.8-3S16 11 16 13v4" /></svg>
+                }
+                @case ('youtube') {
+                  <svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="10" rx="3" /><path d="M11 10l3 2-3 2z" /></svg>
+                }
+                @case ('x') {
+                  <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" /></svg>
+                }
+                @default {
+                  <svg viewBox="0 0 24 24"><path d="M13 19v-6h2l.5-2.5H13V9c0-.8.4-1.2 1.2-1.2H16V5.5c-.6-.1-1.4-.2-2.2-.2-2 0-3.3 1.2-3.3 3.4v1.8H8.5V13h2v6" /></svg>
+                }
+              }
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <div class="footer__bottom">
+      <p>© {{ year }} · {{ config().clinicName }}</p>
+      <p class="small">{{ config().aiAssistant.disclaimer }}</p>
+    </div>
+    <app-logo class="footer__logo" [light]="true" />
+  </div>
+</footer>
