@@ -11,10 +11,10 @@ import { ClinicConfig } from '../models/clinic.models';
  * ─────────────────────────────────────────────────────────────────────────────
  */
 export const CLINIC_CONFIG_DATA: ClinicConfig = {
-  clinicName: 'Alan Psikoterapi',
-  logo: { lineOne: 'ALAN', lead: 'psk', lineTwo: 'TERAPİ' },
-  psychologistName: 'Uzm. Psk. Deniz Aydın',
-  professionalTitle: 'Klinik Psikolog & Psikoterapist',
+  clinicName: 'Fatma Akbulut Psikolojik Danışmanlık ve Psikoterapi Merkezi',
+  logo: { lineOne: 'FATMA', lead: 'psk.', lineTwo: 'AKBULUT' },
+  psychologistName: 'Uzm. Klinik Psk. Fatma Akbulut',
+  professionalTitle: 'Uzman Klinik Psikolog',
   websiteUrl: 'https://www.example.com',
   /** A section anchor ("#ai-randevu") or an external booking url. */
   appointmentUrl: '#ai-randevu',
@@ -28,7 +28,13 @@ export const CLINIC_CONFIG_DATA: ClinicConfig = {
     formatPlaceholder: 'örn. Online',
     formatOptions: ['Online', 'Yüz yüze'],
     cta: 'Randevu Oluştur',
-    stampCaption: 'Nişantaşı',
+    stampCaption: 'Kütahya',
+  },
+
+  intro: {
+    eyebrow: 'Uzman Klinik Psikolog — Kütahya',
+    title: 'Fatma | *Akbulut*',
+    subtitle: 'Psikolojik Danışmanlık | ve Psikoterapi Merkezi',
   },
 
   illustrations: {
@@ -44,25 +50,25 @@ export const CLINIC_CONFIG_DATA: ClinicConfig = {
     title: 'Dinlenmek için bir alan. | *Değişmek için bir yol.*',
     paragraphs: [
       'Zorlandığınız dönemlerde kendinize ayıracağınız zaman bir lüks değil, bir ihtiyaçtır. Terapi; yargılanmadan konuşabileceğiniz, düşüncelerinizi sıraya koyabileceğiniz güvenli bir ortam sunar.',
-      'Kliniğimizde her süreç kişiye özel ilerler. İlk görüşmede beklentilerinizi birlikte konuşur, size en uygun çalışma biçimini ve temposunu beraber belirleriz.',
+      'Merkezimizde çocuk, ergen, yetişkin ve çiftlerle çalışıyor; her süreci kişiye özel ilerletiyoruz. İlk görüşmede beklentilerinizi birlikte konuşur, size en uygun çalışma biçimini ve temposunu beraber belirleriz.',
     ],
   },
 
   therapist: {
-    name: 'Deniz Aydın',
+    name: 'Fatma Akbulut',
     professionalTitle: 'Uzman Klinik Psikolog',
-    image: { src: '', alt: 'Uzman Klinik Psikolog Deniz Aydın' },
+    image: { src: '', alt: 'Uzman Klinik Psikolog Fatma Akbulut' },
     shortStatement: 'Her hikâye, anlatılmayı hak eden bir sessizlik taşır.',
-    bio: 'On iki yıldır bireysel ve çift terapisi alanında çalışıyorum. Danışanlarımla, acele etmeden ve merakla ilerleyen bir ilişki kurmayı önemsiyorum.',
-    approach: 'Bilişsel Davranışçı Terapi, Şema Terapi ve Kabul-Kararlılık Terapisi temelli bütüncül yaklaşım.',
+    bio: '2014 yılından bu yana çocuk, ergen, yetişkin ve çiftlerle çalışıyorum. Danışanlarıma bilimsel ve etik temellere dayalı bir yaklaşımla eşlik etmeyi esas alıyorum.',
+    approach: 'Bilişsel Davranışçı Terapi, EMDR Terapisi, Evlilik ve Çift Terapisi ve Çözüm Odaklı Terapi.',
     philosophy: 'İyileşme, kişinin kendisiyle yeniden temas kurduğu yerde başlar.',
     qualifications: [
-      'Klinik Psikoloji Yüksek Lisans — Hacettepe Üniversitesi',
-      'Şema Terapi Sertifika Programı',
-      'EMDR I. ve II. Düzey Eğitimi',
-      'Türk Psikologlar Derneği Üyesi',
+      'Psikoloji Lisans — Haliç Üniversitesi',
+      'Klinik Psikoloji Yüksek Lisans — Beykoz Üniversitesi (3.95 / 4.00, Yüksek Onur)',
+      'Psikolog — Kütahya Özel Park Hayat Hastanesi (2020–2023)',
+      'Psikolog — Kütahya Su Özel Eğitim ve Rehabilitasyon Merkezi (2019–2020)',
     ],
-    areasOfPractice: ['Kaygı', 'Depresyon', 'İlişki sorunları', 'Travma', 'Yaşam geçişleri', 'Özgüven'],
+    areasOfPractice: ['Kaygı', 'Depresyon', 'Travma', 'Evlilik ve ilişki', 'Öfke kontrolü', 'Çocuk ve ergen'],
   },
 
   servicesSection: {
@@ -75,23 +81,23 @@ export const CLINIC_CONFIG_DATA: ClinicConfig = {
       id: 'bireysel-terapi',
       title: 'Bireysel Terapi',
       tagline: 'Kendi sesinizi yeniden duymak için.',
-      description: 'Haftalık, 50 dakikalık birebir seanslarla size özel ilerleyen bir süreç.',
+      description: 'Bilişsel Davranışçı Terapi temelli, birebir seanslarla size özel ilerleyen bir süreç.',
       formats: ['online', 'yuz-yuze'],
       durationMinutes: 50,
       accent: 'green',
       image: 'hizmetler/bireysel-terapi.webp',
-      keywords: ['depresyon', 'özgüven', 'yalnızlık', 'bireysel'],
+      keywords: ['depresyon', 'duygu durum', 'öfke', 'dürtü kontrol', 'özgüven', 'bireysel'],
     },
     {
       id: 'cift-terapisi',
-      title: 'Çift ve İlişki Terapisi',
+      title: 'Evlilik ve Çift Terapisi',
       tagline: 'İki kişinin arasındaki alanı onarmak.',
-      description: 'İletişim, güven ve bağlanma örüntüleri üzerine birlikte çalışma.',
+      description: 'Evlilik problemleri, iletişim ve güven üzerine; hem bireysel hem çift olarak yürütülen çalışma.',
       formats: ['online', 'yuz-yuze'],
       durationMinutes: 75,
       accent: 'lilac',
       image: 'hizmetler/cift-ve-iliski-terapisi.webp',
-      keywords: ['ilişki', 'evlilik', 'ayrılık', 'çift'],
+      keywords: ['ilişki', 'evlilik', 'iletişim', 'aile', 'çift'],
     },
     {
       id: 'kaygi-ve-stres',
@@ -106,36 +112,36 @@ export const CLINIC_CONFIG_DATA: ClinicConfig = {
     },
     {
       id: 'travma',
-      title: 'Travma ve EMDR',
+      title: 'EMDR ve Travma Terapisi',
       tagline: 'Geçmişin yükünü hafifletmek.',
-      description: 'Zorlayıcı deneyimlerin etkisini güvenli bir tempoda işlemeye yönelik çalışma.',
+      description: 'Travma sonrası stres, kriz ve zorlayıcı deneyimlerin etkisini güvenli bir tempoda işlemeye yönelik çalışma.',
       formats: ['yuz-yuze'],
       durationMinutes: 60,
       accent: 'blue',
       image: 'hizmetler/emdr.webp',
-      keywords: ['travma', 'emdr', 'kayıp', 'yas'],
+      keywords: ['travma', 'emdr', 'tssb', 'kriz', 'kayıp', 'yas'],
     },
     {
-      id: 'yasam-gecisleri',
-      title: 'Yaşam Geçişleri',
-      tagline: 'Bir dönemden diğerine, acele etmeden.',
-      description: 'Taşınma, kariyer değişimi, ebeveynlik gibi eşik anlarında destek.',
+      id: 'cozum-odakli-terapi',
+      title: 'Çözüm Odaklı Terapi',
+      tagline: 'Soruna değil, çıkış yoluna bakmak.',
+      description: 'Kısa süreli, hedef odaklı danışmanlıkla güçlü yanlarınızdan yola çıkan çalışma.',
       formats: ['online', 'yuz-yuze'],
       durationMinutes: 50,
       accent: 'green',
       image: 'hizmetler/yasam-gecisleri.webp',
-      keywords: ['kariyer', 'taşınma', 'ebeveynlik', 'değişim'],
+      keywords: ['çözüm odaklı', 'kısa süreli', 'hedef', 'değişim'],
     },
     {
       id: 'cocuk-terapisi',
-      title: 'Çocuk Terapisi',
+      title: 'Çocuk ve Ergen Psikolojisi',
       tagline: 'Oyunla anlatılan duygular için.',
       description: 'Çocuğun dünyasına oyun ve yaratıcı etkinliklerle eşlik eden, aileyle birlikte yürüyen çalışma.',
       formats: ['yuz-yuze'],
       durationMinutes: 50,
       accent: 'orange',
       image: 'hizmetler/cocuk-terapisi.webp',
-      keywords: ['çocuk', 'ergen', 'oyun terapisi', 'okul', 'aile'],
+      keywords: ['çocuk', 'ergen', 'ayrılma kaygısı', 'okul', 'aile'],
     },
     {
       id: 'online-terapi',
@@ -176,7 +182,7 @@ export const CLINIC_CONFIG_DATA: ClinicConfig = {
   },
 
   credentials: {
-    title: 'Eğitim ve üyelikler',
+    title: 'Eğitim ve deneyim',
   },
 
   aiSection: {
@@ -191,31 +197,24 @@ export const CLINIC_CONFIG_DATA: ClinicConfig = {
   },
 
   contact: {
-    phone: '+90 212 555 01 23',
-    whatsapp: '905325550123',
-    email: 'merhaba@example.com',
-    address: 'Teşvikiye Mah. Örnek Sok. No: 12 D: 4',
-    district: 'Nişantaşı, Şişli',
-    city: 'İstanbul',
-    postalCode: '34365',
+    phone: '+90 850 474 03 65',
+    // whatsapp / email: profilde yok — eklenince footer ve asistanda otomatik görünür.
+    address: 'Alipaşa Mah. Lise Cad. Uysal İş Merkezi Kat: 5 D: 10',
+    district: 'Merkez',
+    city: 'Kütahya',
     country: 'TR',
-    googleMapsUrl: 'https://maps.google.com/?q=Nişantaşı+İstanbul',
-    geo: { lat: 41.0522, lng: 28.9937 },
-    workingHours: [
-      { days: 'Pazartesi — Cuma', hours: '10:00 — 20:00' },
-      { days: 'Cumartesi', hours: '10:00 — 16:00' },
-    ],
+    googleMapsUrl: 'https://maps.google.com/?q=39.4181124,29.9842042',
+    geo: { lat: 39.4181124, lng: 29.9842042 },
+    workingHours: [{ days: 'Görüşmeler', hours: 'Randevu ile' }],
   },
 
   social: {
-    instagram: 'https://instagram.com/example',
-    linkedin: 'https://linkedin.com/in/example',
-    youtube: 'https://youtube.com/@example',
+    instagram: 'https://www.instagram.com/kutahyapsikolog.fatma',
   },
 
   aiAssistant: {
     enabled: true,
-    name: 'Alan Asistan',
+    name: 'Randevu Asistanı',
     intro:
       'Merhaba. Hizmetler, seans süreci ve randevu hakkında sorularınızı yanıtlayabilirim. Ben bir psikolog değilim; tanı koymam veya terapi yerine geçmem.',
     placeholder: 'Bir soru yazın…',
@@ -253,14 +252,13 @@ export const CLINIC_CONFIG_DATA: ClinicConfig = {
   },
 
   seo: {
-    title: 'Alan Psikoterapi — Nişantaşı, İstanbul | Bireysel ve Çift Terapisi',
+    title: 'Uzm. Klinik Psikolog Fatma Akbulut — Kütahya | EMDR, Bireysel ve Çift Terapisi',
     description:
-      'Nişantaşı’nda ve online olarak bireysel terapi, çift terapisi, kaygı ve stres çalışmaları. Kendiniz için bir adım atın.',
-    keywords: ['psikolog', 'psikoterapi', 'çift terapisi', 'online terapi', 'Nişantaşı psikolog'],
+      'Kütahya’da ve online olarak bireysel terapi, EMDR ve travma terapisi, evlilik ve çift terapisi, çocuk ve ergen psikolojisi. Kendiniz için bir adım atın.',
+    keywords: ['Kütahya psikolog', 'klinik psikolog', 'EMDR', 'çift terapisi', 'online terapi', 'Fatma Akbulut'],
     ogImage: 'og-image.jpg',
     locale: 'tr_TR',
     schemaType: 'Psychologist',
-    priceRange: '₺₺₺',
   },
 
   theme: {

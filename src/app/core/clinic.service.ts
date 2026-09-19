@@ -47,7 +47,7 @@ export class ClinicService {
   readonly emailHref = computed(() => `mailto:${this.state().contact.email}`);
   readonly whatsappHref = computed(() => {
     const text = encodeURIComponent(`Merhaba, ${this.state().clinicName} için randevu almak istiyorum.`);
-    return `https://wa.me/${this.state().contact.whatsapp.replace(/\D/g, '')}?text=${text}`;
+    return `https://wa.me/${(this.state().contact.whatsapp ?? '').replace(/\D/g, '')}?text=${text}`;
   });
 
   /** Replace the whole config at runtime (multi-tenant hosting). */

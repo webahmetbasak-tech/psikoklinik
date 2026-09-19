@@ -65,7 +65,7 @@ export class SeoService {
       description: c.seo.description,
       url: c.websiteUrl,
       telephone: c.contact.phone,
-      email: c.contact.email,
+      email: c.contact.email || undefined,
       image: c.seo.ogImage,
       priceRange: c.seo.priceRange,
       address: {

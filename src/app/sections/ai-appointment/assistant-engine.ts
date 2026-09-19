@@ -67,10 +67,14 @@ export class AssistantEngine {
       const message = encodeURIComponent(`Merhaba, ${c.clinicName} için randevu almak istiyorum${detail}.`);
       return {
         role: 'assistant',
-        text: `Harika. Randevu talebinizi WhatsApp veya telefon ile iletebilirsiniz; ekibimiz size uygun saatleri paylaşacaktır.`,
+        text: contact.whatsapp
+          ? `Harika. Randevu talebinizi WhatsApp veya telefon ile iletebilirsiniz; ekibimiz size uygun saatleri paylaşacaktır.`
+          : `Harika. Randevu talebinizi telefon ile iletebilirsiniz; size uygun saatler paylaşılacaktır.`,
         links: [
-          { label: 'WhatsApp ile randevu', href: `https://wa.me/${contact.whatsapp}?text=${message}`, primary: true },
-          { label: contact.phone, href: `tel:${contact.phone.replace(/[^\d+]/g, '')}` },
+          ...(contact.whatsapp
+            ? [{ label: 'WhatsApp ile randevu', href: `https://wa.me/${contact.whatsapp}?text=${message}`, primary: true }]
+            : []),
+          { label: contact.phone, href: `tel:${contact.phone.replace(/[^\d+]/g, '')}`, primary: !contact.whatsapp },
         ],
       };
     }

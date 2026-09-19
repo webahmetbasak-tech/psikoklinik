@@ -23,9 +23,10 @@ export interface WorkingHour {
 
 export interface ContactInfo {
   phone: string;
-  /** International format digits only, e.g. 905551112233 — used for wa.me links. */
-  whatsapp: string;
-  email: string;
+  /** International format digits only, e.g. 905551112233 — used for wa.me links. Omit to hide WhatsApp. */
+  whatsapp?: string;
+  /** Omit to hide e-mail. */
+  email?: string;
   address: string;
   district: string;
   city: string;
@@ -170,6 +171,16 @@ export interface BookingSection {
   cta: string;
 }
 
+/** Editorial name lockup beside the room illustration. Falls back to clinicName. */
+export interface IntroSection {
+  /** Small uppercase line above the name. */
+  eyebrow: string;
+  /** Display name; rich text (`|` break, `*word*` underline). */
+  title: string;
+  /** Rest of the clinic name, set small under the title; `|` = line break. */
+  subtitle: string;
+}
+
 export interface FooterConfig {
   slogan: string;
   contactTitle: string;
@@ -207,6 +218,7 @@ export interface ClinicConfig {
   language: string;
 
   hero: HeroConfig;
+  intro?: IntroSection;
   /** Line-art SVGs under /public, coloured in by a marker brush on scroll. */
   illustrations: SectionIllustrations;
   about: AboutSection;

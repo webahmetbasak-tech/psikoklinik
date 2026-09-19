@@ -7,8 +7,12 @@
         <h2 id="f-contact" class="card__title">{{ config().footer.contactTitle }}</h2>
         <ul>
           <li><a [href]="clinic.phoneHref()">{{ c().phone }}</a></li>
-          <li><a [href]="clinic.whatsappHref()" target="_blank" rel="noopener">WhatsApp</a></li>
-          <li><a [href]="clinic.emailHref()">{{ c().email }}</a></li>
+          @if (c().whatsapp) {
+            <li><a [href]="clinic.whatsappHref()" target="_blank" rel="noopener">WhatsApp</a></li>
+          }
+          @if (c().email) {
+            <li><a [href]="clinic.emailHref()">{{ c().email }}</a></li>
+          }
           <li>
             <a [href]="c().googleMapsUrl" target="_blank" rel="noopener">{{ c().address }}, {{ c().district }} / {{ c().city }}</a>
           </li>
